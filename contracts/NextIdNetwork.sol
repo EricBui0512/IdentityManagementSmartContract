@@ -7,10 +7,9 @@ contract NextIdNetwork {
   	mapping(address => UserProfile) userList;
   	
 
-	function NextIdNetwork(NextIdNetwork _adminAddress) public {
+	function NextIdNetwork(address _adminAddress) public {
 		admin = _adminAddress;
 	}
-
 
   	function getUserTotal() public view returns (uint) {
   		return nextIdUserProfiles.length;

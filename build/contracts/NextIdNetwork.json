@@ -1,0 +1,658 @@
+{
+  "contractName": "NextIdNetwork",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getUserTotal",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "getUserProfile",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "nextIdUserProfiles",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_adminAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b60405160208061034283398101604052808051906020019091905050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506102c78061007b6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806331f6d80914610067578063987ee15614610090578063d9ad64a414610109578063f851a4401461016c575b600080fd5b341561007257600080fd5b61007a6101c1565b6040518082815260200191505060405180910390f35b341561009b57600080fd5b6100c7600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ce565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011457600080fd5b61012a6004808035906020019091905050610237565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561017757600080fd5b61017f610276565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000600180549050905090565b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b60018181548110151561024657fe5b90600052602060002090016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a723058201b08030fc280eb728466de0b609e8d07d2abcaf8c9e635b0f5b6598776c7b5270029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806331f6d80914610067578063987ee15614610090578063d9ad64a414610109578063f851a4401461016c575b600080fd5b341561007257600080fd5b61007a6101c1565b6040518082815260200191505060405180910390f35b341561009b57600080fd5b6100c7600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ce565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011457600080fd5b61012a6004808035906020019091905050610237565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561017757600080fd5b61017f610276565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000600180549050905090565b6000600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b60018181548110151561024657fe5b90600052602060002090016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a723058201b08030fc280eb728466de0b609e8d07d2abcaf8c9e635b0f5b6598776c7b5270029",
+  "sourceMap": "54:562:2:-;;;202:82;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;267:13;259:5;;:21;;;;;;;;;;;;;;;;;;202:82;54:562;;;;;;",
+  "deployedSourceMap": "54:562:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;289:95;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;496:114;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;110:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;82:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;289:95;334:4;353:18;:25;;;;346:32;;289:95;:::o;496:114::-;559:11;582:8;:18;591:8;582:18;;;;;;;;;;;;;;;;;;;;;;;;;575:25;;496:114;;;:::o;110:39::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;82:20::-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.18;\nimport './UserProfile.sol';\n\ncontract NextIdNetwork {\n  \taddress public admin;  \t\n  \tUserProfile[] public nextIdUserProfiles;\n  \tmapping(address => UserProfile) userList;\n  \t\n\n\tfunction NextIdNetwork(address _adminAddress) public {\n\t\tadmin = _adminAddress;\n\t}\n\n  \tfunction getUserTotal() public view returns (uint) {\n  \t\treturn nextIdUserProfiles.length;\n  \t}\n\n  \t// function isUser(address _address) public returns (bool) {\n  \t// \treturn userList[_address];\n  \t// }\n\n  \tfunction getUserProfile(address _address) public view returns (UserProfile){\n\t\treturn userList[_address];  \t\t\n  \t}\n  \t\n}\n",
+  "sourcePath": "/home/quaywin/Project/nextid/contracts/NextIdNetwork.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/home/quaywin/Project/nextid/contracts/NextIdNetwork.sol",
+      "exportedSymbols": {
+        "NextIdNetwork": [
+          521
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 479,
+        "name": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 657,
+          "absolutePath": "/home/quaywin/Project/nextid/contracts/UserProfile.sol",
+          "file": "./UserProfile.sol",
+          "scope": 522,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 480,
+        "name": "ImportDirective",
+        "src": "25:27:2"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            521
+          ],
+          "name": "NextIdNetwork",
+          "scope": 522
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "admin",
+              "scope": 521,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "type": "address"
+                },
+                "id": 481,
+                "name": "ElementaryTypeName",
+                "src": "82:7:2"
+              }
+            ],
+            "id": 482,
+            "name": "VariableDeclaration",
+            "src": "82:20:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "nextIdUserProfiles",
+              "scope": 521,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract UserProfile[] storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "contract UserProfile[] storage pointer"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "UserProfile",
+                      "referencedDeclaration": 656,
+                      "type": "contract UserProfile"
+                    },
+                    "id": 483,
+                    "name": "UserDefinedTypeName",
+                    "src": "110:11:2"
+                  }
+                ],
+                "id": 484,
+                "name": "ArrayTypeName",
+                "src": "110:13:2"
+              }
+            ],
+            "id": 485,
+            "name": "VariableDeclaration",
+            "src": "110:39:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "userList",
+              "scope": 521,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => contract UserProfile)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => contract UserProfile)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 486,
+                    "name": "ElementaryTypeName",
+                    "src": "162:7:2"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "UserProfile",
+                      "referencedDeclaration": 656,
+                      "type": "contract UserProfile"
+                    },
+                    "id": 487,
+                    "name": "UserDefinedTypeName",
+                    "src": "173:11:2"
+                  }
+                ],
+                "id": 488,
+                "name": "Mapping",
+                "src": "154:31:2"
+              }
+            ],
+            "id": 489,
+            "name": "VariableDeclaration",
+            "src": "154:40:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "NextIdNetwork",
+              "payable": false,
+              "scope": 521,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_adminAddress",
+                      "scope": 499,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 490,
+                        "name": "ElementaryTypeName",
+                        "src": "225:7:2"
+                      }
+                    ],
+                    "id": 491,
+                    "name": "VariableDeclaration",
+                    "src": "225:21:2"
+                  }
+                ],
+                "id": 492,
+                "name": "ParameterList",
+                "src": "224:23:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 493,
+                "name": "ParameterList",
+                "src": "255:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 482,
+                              "type": "address",
+                              "value": "admin"
+                            },
+                            "id": 494,
+                            "name": "Identifier",
+                            "src": "259:5:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 491,
+                              "type": "address",
+                              "value": "_adminAddress"
+                            },
+                            "id": 495,
+                            "name": "Identifier",
+                            "src": "267:13:2"
+                          }
+                        ],
+                        "id": 496,
+                        "name": "Assignment",
+                        "src": "259:21:2"
+                      }
+                    ],
+                    "id": 497,
+                    "name": "ExpressionStatement",
+                    "src": "259:21:2"
+                  }
+                ],
+                "id": 498,
+                "name": "Block",
+                "src": "255:29:2"
+              }
+            ],
+            "id": 499,
+            "name": "FunctionDefinition",
+            "src": "202:82:2"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getUserTotal",
+              "payable": false,
+              "scope": 521,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 500,
+                "name": "ParameterList",
+                "src": "310:2:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 508,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 501,
+                        "name": "ElementaryTypeName",
+                        "src": "334:4:2"
+                      }
+                    ],
+                    "id": 502,
+                    "name": "VariableDeclaration",
+                    "src": "334:4:2"
+                  }
+                ],
+                "id": 503,
+                "name": "ParameterList",
+                "src": "333:6:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 503
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "length",
+                          "referencedDeclaration": null,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 485,
+                              "type": "contract UserProfile[] storage ref",
+                              "value": "nextIdUserProfiles"
+                            },
+                            "id": 504,
+                            "name": "Identifier",
+                            "src": "353:18:2"
+                          }
+                        ],
+                        "id": 505,
+                        "name": "MemberAccess",
+                        "src": "353:25:2"
+                      }
+                    ],
+                    "id": 506,
+                    "name": "Return",
+                    "src": "346:32:2"
+                  }
+                ],
+                "id": 507,
+                "name": "Block",
+                "src": "340:44:2"
+              }
+            ],
+            "id": 508,
+            "name": "FunctionDefinition",
+            "src": "289:95:2"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getUserProfile",
+              "payable": false,
+              "scope": 521,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 520,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 509,
+                        "name": "ElementaryTypeName",
+                        "src": "520:7:2"
+                      }
+                    ],
+                    "id": 510,
+                    "name": "VariableDeclaration",
+                    "src": "520:16:2"
+                  }
+                ],
+                "id": 511,
+                "name": "ParameterList",
+                "src": "519:18:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 520,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract UserProfile",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "UserProfile",
+                          "referencedDeclaration": 656,
+                          "type": "contract UserProfile"
+                        },
+                        "id": 512,
+                        "name": "UserDefinedTypeName",
+                        "src": "559:11:2"
+                      }
+                    ],
+                    "id": 513,
+                    "name": "VariableDeclaration",
+                    "src": "559:11:2"
+                  }
+                ],
+                "id": 514,
+                "name": "ParameterList",
+                "src": "558:13:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 514
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "contract UserProfile"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 489,
+                              "type": "mapping(address => contract UserProfile)",
+                              "value": "userList"
+                            },
+                            "id": 515,
+                            "name": "Identifier",
+                            "src": "582:8:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 510,
+                              "type": "address",
+                              "value": "_address"
+                            },
+                            "id": 516,
+                            "name": "Identifier",
+                            "src": "591:8:2"
+                          }
+                        ],
+                        "id": 517,
+                        "name": "IndexAccess",
+                        "src": "582:18:2"
+                      }
+                    ],
+                    "id": 518,
+                    "name": "Return",
+                    "src": "575:25:2"
+                  }
+                ],
+                "id": 519,
+                "name": "Block",
+                "src": "571:39:2"
+              }
+            ],
+            "id": 520,
+            "name": "FunctionDefinition",
+            "src": "496:114:2"
+          }
+        ],
+        "id": 521,
+        "name": "ContractDefinition",
+        "src": "54:562:2"
+      }
+    ],
+    "id": 522,
+    "name": "SourceUnit",
+    "src": "0:617:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-01-31T11:07:19.714Z"
+}

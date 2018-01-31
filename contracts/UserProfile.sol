@@ -3,13 +3,14 @@ pragma solidity ^0.4.18;
 contract UserProfile {
   	address public owner;
   	address public nextIdAddress;
-  	bytes32 private userName;
-  	bytes32 private email;
+  	string private userName;
+  	string private email;
 	address[] private facetList;
 	uint private veriferNo;
 	uint private shareNo;
 
 	function UserProfile(address _networkIdAddress) public {
+		owner = msg.sender;
 		nextIdAddress = _networkIdAddress;
 	}
 
@@ -24,20 +25,20 @@ contract UserProfile {
 		nextIdAddress = _networkIdAddress;
 	}
 
-	function setUserName(bytes32 _userName) public onlyOwner {
+	function setUserName(string _userName) public onlyOwner returns (string) {
 		userName = _userName;
 	}
 
-	function setEmail(bytes32 _email) public onlyOwner {
+	function setEmail(string _email) public onlyOwner returns (string) {
 		email = _email;
 	}
 
 	//getters
-	function getUserName() public view returns (bytes32) {
+	function getUserName() public view returns (string) {
 		return userName;
 	}
 
-	function getEmail() public view returns (bytes32 ) {
+	function getEmail() public view returns (string) {
 		return email;
 	}
 
