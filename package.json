@@ -50,13 +50,17 @@
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "ethereumjs-testrpc": "^6.0.3",
+    "namor": "^1.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "truffle-hdwallet-provider": "^0.0.3",
+    "web3": "^1.0.0-beta.30",
     "zeppelin-solidity": "^1.6.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "rm -rf ./build && truffle compile",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
